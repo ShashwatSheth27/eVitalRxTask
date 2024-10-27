@@ -32,28 +32,28 @@ Before running the Laravel project, ensure you have the following installed:
    - `DB_CONNECTION`: Your database connection (e.g., `mysql`)
    - `DB_HOST`: Database host (usually `127.0.0.1`)
    - `DB_PORT`: Database port (usually `3306`)
-   - `DB_DATABASE`: Your database name
-   - `DB_USERNAME`: Your database username
-   - `DB_PASSWORD`: Your database password
+   - `DB_DATABASE`: Your database name (e.g., `eVitalRx`)
+   - `DB_USERNAME`: Your database username (e.g., `root`)
+   - `DB_PASSWORD`: Your database password (usually ``)
    - `MAIL_MAILER`: `smtp`
    - `MAIL_HOST`: `smtp.gmail.com`
    - `MAIL_PORT`: `587`
    - `MAIL_USERNAME`: Your gmail id (e.g., `shethshashwat26@gmail.com`)
    - `MAIL_PASSWORD`: Your gmail app password (e.g., `ydge vnnb ctse rtfd`)
    - `MAIL_ENCRYPTION`: `null`
-   - `MAIL_FROM_ADDRESS`: email from address
-   - `MAIL_FROM_NAME`: email from name
+   - `MAIL_FROM_ADDRESS`: email from address (e.g., `shethshashwat26@gmail.com`)
+   - `MAIL_FROM_NAME`: email from name (e.g., `eVitalRx`)
    - Update any other relevant API endpoints or keys.
 
 5. **API Endpoints:**
    
     Here are the available API endpoints:
-   - **POST /signup**: Register a new user.
-   - **POST /verify-email**: Verify the email address using an OTP.
-   - **POST /login**: Authenticate a user and log them in.
-   - **POST /forgot-password**: Initiate the password reset process.
-   - **POST /reset-password**: Reset the user's password.
-   - **POST /profile/update**: Update the authenticated user's profile (requires authentication).
+   - **POST /api/signup**: Register a new user.
+   - **POST /api/verify-email**: Verify the email address using an OTP.
+   - **POST /api/login**: Authenticate a user and log them in.
+   - **POST /api/forgot-password**: Initiate the password reset process.
+   - **POST /api/reset-password**: Reset the user's password.
+   - **POST /api/profile/update**: Update the authenticated user's profile (requires authentication).
 
 6. **Run migrations:**
    ```bash

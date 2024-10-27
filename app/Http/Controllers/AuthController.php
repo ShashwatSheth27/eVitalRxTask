@@ -129,7 +129,7 @@ class AuthController extends Controller
         try {
             $mailData['email'] = $request->email;
             $mailData['title'] = 'Password Reset Link';
-            $mailData['content'] = "Your password reset link is: $verificationLink \n Update your password within next 30 minutes.";
+            $mailData['content'] = "Your password reset link is: $verificationLink. Update your password within next 30 minutes.";
             Mail::send('mail_template',['data' => $mailData], function ($message) use ($mailData) {
                 $message->to($mailData['email'])->subject($mailData['title']);
             });
@@ -157,7 +157,7 @@ class AuthController extends Controller
         $user = User::where('email', $tokenDetails[0]['email'])->first();
         $user->password = Hash::make($request->password);
         $user->save();
-
+        $user->tokens()->delete();
         return response()->json(['success' => '1', 'message' => 'Password reset successfully.']);
     }
 }
