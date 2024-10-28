@@ -40,7 +40,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:50|unique:users',
+            'email' => 'required|string|lowercase|email|max:50|unique:users',
             'password' => 'required|string|confirmed|min:8',
             'password_confirmation' => 'required',
             'phone_no' => 'required|digits:10|unique:users',
@@ -145,7 +145,7 @@ class AuthController extends Controller
         if(empty($request->token)) return response()->json(['success'=>0]);
         $timeLimitInMinutes = 30;
         $tokenDetails = PasswordReset::where('token',$request->token)->get();
-        if(!count($tokenDetails) > 0 || now()->diffInMinutes($tokenDetails[0]['created_at']) > $timeLimitInMinutes)
+        if(empty($tokenDetails[0]) || empty($tokenDetails[0]['email'] || empty($tokenDetails[0]['created_at'])) || !count($tokenDetails) > 0 || now()->diffInMinutes($tokenDetails[0]['created_at']) > $timeLimitInMinutes)
             return response()->json(['success'=>0,'error'=>'Invalid or expired token found in the request']);
         
         $validator = Validator::make($request->all(), [
